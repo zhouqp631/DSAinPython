@@ -23,7 +23,7 @@
 ##### 2.1 Brute-force
 > The set of all different parenthesizations of the expression for A is equal in number to **the set of all different ferent binary trees that have n leaves**, i.e., **Catalan_number**.
 
-![][https://github.com/zhouqp631/DSAinPython/blob/master/catalan.png]
+![](https://github.com/zhouqp631/DSAinPython/blob/master/catalan.png)
 
 > Catalan_number
 
@@ -31,15 +31,14 @@
 ##### 2.2 Split the problem into subproblmes
 - 无论在计算$A=A_0 * A_1* ... * A_{n-1}$时怎么加括号，都会出现这种形式$(A_0 * ... A_i) * (A_{i+1} * ... * A_{n-1})$.那么$A$的计算量为：$N_{0,i}:(A_0 * ... A_i)$+$N_{i+1,n-1}:(A_{i+1} * ... * A_{n-1})$+$f(0,i,n):d_0 * d_{i+1} * d_n$.
 
-$A$的最优计算量为i从0到n-2遍历后得到的最小计算量，也就是：
-$N_{0,n-1} = min{N_{0,i} + N_{i+1,n-1}+d_0 * d_{i+1} * d_n $.
+$A$的最优计算量为i从0到n-2遍历后得到的最小计算量，也就是：$N_{0,n-1} = min\{N_{0,i} + N_{i+1,n-1}+d_0 * d_{i+1} * d_n\} $.
 
 > $N_{0,i}$表示计算$A_0 * ... A_i$的最小计算量
 
 - 递推的表达式已经有了，现在解决子问题的最优解。
   无论在计算$(A_0 * ... A_i)$时怎么加括号，都会出现这种形式$(A_0 * ... A_j) * (A_{j+1} * ... * A_{i})$.那么$(A_0 * ... A_i)$的计算量为：$N_{0,j}:(A_0 * ... A_j)$+$N_{j+1,i}:(A_{j+1} * ... * A_{i})$+$f(0,j,i):d_0 * d_{j+1} * d_i$.
 $(A_0 * ... A_i)$的最优计算量为i从0到n-2遍历后得到的最小计算量，也就是：
-$N_{0,i} = min{N_{0,j} + N_{j+1,i} + d_0 * d_{j+1} * d_i $.
+$N_{0,i} = min\{N_{0,j} + N_{j+1,i} + d_0 * d_{j+1} * d_i \}$.
 
 - 所以不断这样迭代，应该就可以得到base case：$N_{i,i}=0$.
 
@@ -49,16 +48,16 @@ $N_{0,i} = min{N_{0,j} + N_{j+1,i} + d_0 * d_{j+1} * d_i $.
 ----------------------------------------
 - 初始化 $N_{i,i}=0$ for i in range(0,n)
 
-![][https://github.com/zhouqp631/DSAinPython/blob/master/dp1.png]
+![](https://github.com/zhouqp631/DSAinPython/blob/master/dp1.png)
 
 - 然后可以计算 $N_{i,i+1}$，因为 $N_{i,i}$和 $N_{i+1,i+1}$都知道了，$A_i * A_{i+1}$只有一种计算方式。
 
-![][https://github.com/zhouqp631/DSAinPython/blob/master/dp2.png]
+![](https://github.com/zhouqp631/DSAinPython/blob/master/dp2.png)
 
 - 然后计算 $N_{i,i+2}$
-![][https://github.com/zhouqp631/DSAinPython/blob/master/dp3.png]
+![](https://github.com/zhouqp631/DSAinPython/blob/master/dp3.png)
 
-- 然后计算 $N_{i,i+3$
+- 然后计算 $N_{i,i+3}$
 
 - Finally， we get $N_{0,n-1}$
 
@@ -75,5 +74,5 @@ def matrix_chain(d):
 ```
 
 ### Main References
-- Data Structures $\&$ Algorithms in Python
+- Data Structures & Algorithms in Python
 - [Catalan_number][https://en.wikipedia.org/wiki/Catalan_number]
