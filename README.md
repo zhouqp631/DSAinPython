@@ -13,7 +13,7 @@ $A(BC)$的计算量是 $10\*20\*50+2\*20\*10=10400$。
 也就是说：不同的相乘顺序，其计算量是不同的。  
 
 **问题推广到一般情况**：
-给定$A=A_0 * A_1* ... * A_{n-1}$, 选择计算顺序(也就是在不同的地方加括号)，使得计算量最小。
+给定$A=A_0 * A_1* ... * A_{n-1}$, 其中$A_i$的大小为:$d_i \times d_i+1$.选择计算顺序(也就是在不同的地方加括号)，使得计算量最小。
 
 > 计算量：the total number of scalar of multiplications
 
@@ -69,6 +69,8 @@ $A$的最优计算量为i从0到n-2遍历后得到的最小计算量，也就是
 
 ```python
 def matrix_chain(d):
+    ''' d is a list: [d[0],d[1],...,d[n-1],d[n]]
+    '''
     n = len(d)-1
     N = [[0]*n for _ in range(n)]
     for b in range(1,n):      # number of products in subchain
