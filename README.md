@@ -82,7 +82,7 @@ def matrix_chain(d):
 ```
 ## 3. 计算复杂度
 ----------------------------------------
-3 nested loop: [for b] + [for j] + [for k]  
+3 nested loop: '[for b]' + '[for j]' + '[for k]'  
 每一个迭代最多计算 $n$次，所以计算复杂度是 $O(n^3)$
 
 ## Main References
