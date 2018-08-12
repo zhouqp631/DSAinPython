@@ -76,8 +76,8 @@ def matrix_chain(d):
     for b in range(1,n):      # number of  products in subchain
         for i in range(n-b):  # start of subchain
             j = i+b
-            N[i][j] = min(N[i][k]+N[k+1][j]+d[i]*d[k+1]*d[j+1] for k in range(i,j))
-    return N[-1][-1]
+            N[i][j] = min([N[i][k]+N[k+1][j]+d[i]*d[k+1]*d[j+1] for k in range(i,j)])
+    return N[0][n-1]
 
 ```
 解释： b 表示subchain的长度, 当b=1时, 计算$N_{0,1},N_{1,2},...,N_{n-2,n-1}$; 当b=2时，计算$N_{0,2},N_{1,3},...,N_{n-3,n-1}$;...当b=n-1时,计算$N_{0,n-1}$
